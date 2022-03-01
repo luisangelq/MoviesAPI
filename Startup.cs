@@ -1,4 +1,6 @@
-﻿namespace MoviesAPI
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace MoviesAPI
 {
     public class Startup
     {
@@ -10,6 +12,9 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllers();
             services.AddEndpointsApiExplorer();
         }
