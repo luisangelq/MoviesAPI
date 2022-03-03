@@ -8,7 +8,7 @@ namespace MoviesAPI.Controllers
 {
     [ApiController]
     [Route("api/actors")]
-    public class ActorsController: ControllerBase
+    public class ActorsController : ControllerBase
     {
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
@@ -44,17 +44,17 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateActorDTO createActorDTO)
+        public async Task<ActionResult> Post([FromForm] CreateActorDTO createActorDTO)
         {
             var entity = mapper.Map<Actor>(createActorDTO);
             context.Add(entity);
 
-            await context.SaveChangesAsync();
+            //await context.SaveChangesAsync();
 
             var actorDTO = mapper.Map<ActorDTO>(entity);
 
             return new CreatedAtRouteResult(
-                "getActor", new { id = entity.Id}, actorDTO);
+                "getActor", new { id = entity.Id }, actorDTO);
         }
 
         [HttpPut("{id:int}")]
