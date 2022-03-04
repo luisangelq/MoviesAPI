@@ -4,7 +4,7 @@ using MoviesAPI.Entities;
 
 namespace MoviesAPI.Helpers
 {
-    public class AutoMapperProfiles: Profile
+    public class AutoMapperProfiles : Profile
     {
         public AutoMapperProfiles()
         {
@@ -12,7 +12,8 @@ namespace MoviesAPI.Helpers
             CreateMap<CreateGenreDTO, Genre>();
 
             CreateMap<Actor, ActorDTO>().ReverseMap();
-            CreateMap<CreateActorDTO, Actor>();
+            CreateMap<CreateActorDTO, Actor>()
+                .ForMember(x => x.Photo, options => options.Ignore());
         }
     }
 }
