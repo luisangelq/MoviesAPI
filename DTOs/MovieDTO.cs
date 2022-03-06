@@ -1,12 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MoviesAPI.Entities
+namespace MoviesAPI.DTOs
 {
-    public class Movie
+    public class MovieDTO
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(300)]
         public string Title { get; set; }
         public bool InCinema { get; set; }
         public DateTime ReleaseDate { get; set; }
