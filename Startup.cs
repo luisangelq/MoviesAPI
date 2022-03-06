@@ -18,7 +18,8 @@ namespace MoviesAPI
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson();
             services.AddEndpointsApiExplorer();
 
             services.AddTransient<IFileStorage, FileStorageAzure>();
